@@ -10,7 +10,7 @@ import { ITimepickerEvent } from './ITimepickerEvent';
     template: `
         <div class="form-inline ng2-datetime">
             <div [ngClass]="{ 'form-group': true, 'input-group': !datepickerOptions.hideIcon, 'date': true }">
-                <input id="{{idDatePicker}}" type="text" class="form-control"
+                <input id="{{idDatePicker}}" type="text" class="form-control {{cssClass}}"
                        [attr.readonly]="readonly"
                        [attr.required]="required"
                        [attr.placeholder]="datepickerOptions.placeholder || 'Choose date'"
@@ -25,7 +25,7 @@ import { ITimepickerEvent } from './ITimepickerEvent';
                 </div>
             </div>
             <div [ngClass]="{ 'form-group': true, 'input-group': !timepickerOptions.hideIcon, 'bootstrap-timepicker timepicker': true }">
-                <input id="{{idTimePicker}}" type="text" class="form-control input-small"
+                <input id="{{idTimePicker}}" type="text" class="form-control input-small {{cssClass}}"
                        [attr.readonly]="readonly"
                        [attr.required]="required"
                        [attr.placeholder]="timepickerOptions.placeholder || 'Set time'"
@@ -54,6 +54,7 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
     @Input() readonly: boolean = null;
     @Input() required: boolean = null;
     @Input() tabindex: string;
+	@Input() cssClass: string;
 
     date: Date; // ngModel
     dateModel: string;
